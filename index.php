@@ -14,7 +14,7 @@ if (isset ($_REQUEST ['doUpload'])) {// Проверяем, нажата ли к
  	if (preg_match ('{image/(.*)}is', $info['mime'], $p )) {
  		// Имя берем равным текущему времени в секундах, а
  		// расширение — как часть MIME-типа после "image/".
- 		$name = "$imgDir/" . time () . "." . $p [1];
+ 		$name = "$imgDir/" ."IMG_". time () . "." . $p [1];
  		// Добавляем файл в каталог с фотографиями.
  		move_uploaded_file ( $tmp, $name );
  	} else {
@@ -25,7 +25,7 @@ if (isset ($_REQUEST ['doUpload'])) {// Проверяем, нажата ли к
  	}
  }
  // Считываем в массив фотоальбом.
- $photos = array ();
+ $photos = [];
  foreach ( glob ( "$imgDir/*" ) as $path ) {
  $sz = getimagesize ( $path ); // размер
  $tm = filemtime ( $path ); // время добавления
